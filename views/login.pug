@@ -1,0 +1,20 @@
+extends layout
+block content
+
+    main.index-main.index
+
+        .chooseBox 
+            img.logo(src="/img/logo.svg", alt="")
+            form.form(action="/user/login" method="POST") 
+                .form__box
+                    input.form__input(type="text" placeholder="Enter Username" name="username")
+                .form__box.passBox
+                    input#password.form__input(type="password" placeholder="Enter Password" name="password")
+                    button.showPass(type='button')
+                        i.passIco(class='bx bxs-show')
+                .form__box.form__box--btns
+                    a.link.form__link(href="/") Go back 
+                    button.btn.form__submit(type="submit") Login
+            p.credentials Designed and Created by Bartosz Solga
+        
+                

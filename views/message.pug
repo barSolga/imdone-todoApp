@@ -1,0 +1,12 @@
+.messages
+    each type in Object.keys(messages)
+        each message in messages[type]
+            div(class= "alert alert-"+type)
+                if type == 'success' 
+                    span !{message}
+                    button.closePopup 
+                        i.bx.bx-x
+                else 
+                    span !{message}
+                    button.closePopup 
+                        i.bx.bx-x

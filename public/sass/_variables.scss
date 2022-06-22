@@ -1,0 +1,35 @@
+:root {
+
+    // color
+    --first-color-dark: #4D4EFB;
+    --first-color-light: #E7E7FF;
+    --second-color-dark: #706EFB;
+    --text-color-dark: #696969;
+    --bg-color: #F3F3F3;
+    --white: #fff;
+
+    // todosColors
+    // done
+    --done-body-color: #E2F4F5;
+    --done-toolbar-color: #CDE4E3;
+    --done-credentials-color: #539190;
+    // normal
+    --normal-body-color: #D0D0FF;
+    --normal-toolbar-color: #A7A8F8;
+    --normal-credentials-color: #4D4EFB;
+    // important
+    --important-body-color: #F77990;
+    --important-toolbar-color: #FFB7C4;
+    --important-credentials-color: #FF4A6B;
+
+
+    // Font and typography
+    --body-font: 'Poppins', sans-serif;
+    --h1-font-size: 3.4rem;
+    --h2-font-size: 2rem;
+    --h3-font-size: 1.8rem;
+    --h4-font-size: 1.4rem;
+    --header-text-size: 1.6rem;
+    --text-font-size: 1.2rem;
+    --small-font-size: 1.2rem;
+}

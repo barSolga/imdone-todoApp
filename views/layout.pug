@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="shortcut icon", href="/img/favicon.ico", type="image/x-icon")
+        title= `I'm Done | ${title}`
+        //- google fonts
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet")
+        //- Box-icons
+        link(href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet')
+        //- internal css file
+        link(rel="stylesheet", href="/css/style.css")
+    body(class= bodyClass)
+
+        //- pageloader
+        .loader
+
+        //- errors box 
+        .errors
+            != messages('message', locals)
+            if errors 
+                each error, i in errors 
+                    div(class='alert alert-danger') 
+                        span !{error.msg}
+                        button.closePopup 
+                            i.bx.bx-x
+
+        block content
+
+
+        //- jquery
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js") 
+        //- internal script js file
+        script(src="/js/main.js") 

@@ -1,0 +1,22 @@
+// global styles
+@import 'variables';
+@import 'base';
+@import 'layout';
+@import 'theme';
+@import 'animations';
+
+
+
+// components
+@import './components/index';
+@import './components/dashboard';
+
+
+
+
+
+
+
+
+// mediaqueries
+@import 'media';

@@ -1,0 +1,23 @@
+extends layout
+block content
+
+    main.index-main.index
+        .chooseBox 
+            img.logo(src="/img/logo.svg", alt="")
+            .btns
+                if !user
+                    a.btn.login-btn(href="/user/login") Login
+                    a.btn.register-btn(href="/user/register") Register
+                else 
+                    a.btn(href="/user/todo") Dashboard
+            .separate
+            p.credentials
+                span= users + ' Users registered!'
+                br
+                span= todos + ' TODOs created!'
+                br
+                br
+            p.credentials Designed and Created by Bartosz Solga
+
+        
+        a.link.privacy-link(href="/privacy-policy") Privacy policy

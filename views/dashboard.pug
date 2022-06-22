@@ -1,0 +1,125 @@
+extends layout
+block content
+    .bar
+        p.userWelcome= 'Welcome ' + user.username
+        a.btn-icon--top(href="/user/logout")
+            i.bx.bxs-exit
+
+    main.main-dashboard
+
+        ul.todo
+            li.currentDate
+            if todos.length === 0
+                
+                p.nothingHere 
+                    img(src="/img/undraw_no_data_re_kwbl.svg", alt="" width="160px")
+                    span.text
+                        i.bx.bx-info-circle
+                        |Nothing here... YET!
+            
+            each todo, i in todos
+                if todo.isDone === false
+                    if todo.priority == 0
+                        li.todo__container.undone(data-date= todo.date data-priority= todo.priority)
+                            .todo__top 
+                                .content
+                                    span.todo__text.title(data-id= todo._id)= `${todo.body}`
+                                    p.todo__desc= todo.description
+                                .todo__icon 
+                                    i.bx.bxs-hourglass
+                            .todo__bottom
+                                span.todo__text Normal
+                                .todo__toolbar
+                                    a.todo__btn.done-todo(href=`/user/done/${todo._id}` data-id= todo._id)
+                                        i(class='bx bx-check-square')
+                                    a.todo__btn.edit-todo(href=`/user/edit/${todo._id}`)
+                                        i(class='bx bxs-edit-alt')
+                                    a.todo__btn.delete-todo(href=`/user/delete/${todo._id}`)
+                                        i(class='bx bxs-trash-alt')
+                    else 
+                        li.todo__container.undone(data-date= todo.date data-priority= todo.priority)
+                            .todo__top 
+                                .content
+                                    span.todo__text(data-id= todo._id)= `${todo.body}`
+                                    p.todo__desc= todo.description
+                                .todo__icon 
+                                    i.bx.bxs-error
+                            .todo__bottom
+                                span.todo__text Important
+                                .todo__toolbar
+                                    a.todo__btn.done-todo(href=`/user/done/${todo._id}` data-id= todo._id)
+                                        i(class='bx bx-check-square')
+                                    a.todo__btn.edit-todo(href=`/user/edit/${todo._id}`)
+                                        i(class='bx bxs-edit-alt')
+                                    a.todo__btn.delete-todo(href=`/user/delete/${todo._id}`)
+                                        i(class='bx bxs-trash-alt')
+                else
+                    li.todo__container.done(data-date= todo.date data-priority= todo.priority)
+                            .todo__top 
+                                .content
+                                    span.todo__text(data-id= todo._id)= `${todo.body}`
+                                    p.todo__desc= todo.description
+                                .todo__icon 
+                                    i.bx.bxs-check-circle
+                            .todo__bottom
+                                span.todo__text Done
+                                .todo__toolbar
+                                    a.todo__btn.done-todo(href=`/user/undone/${todo._id}` data-id= todo._id)
+                                        i(class='bx bxs-x-square')
+                                    a.todo__btn.delete-todo(href=`/user/delete/${todo._id}`)
+                                        i(class='bx bxs-trash-alt')
+
+        .bottomMenu
+            button.btn-icon.showStats 
+                i.bx.bxs-doughnut-chart
+            button.btn-icon.addTask 
+                i.bx.bxs-duplicate
+            span.datepicker-toggle
+                button.btn-icon.datepicker-toggle-button
+                    i(class='bx bxs-calendar')
+                input.datepicker-input(type="date" id="start" name="date" value="" min="2018-01-01")
+        
+        .addTaskContainer
+            .bar 
+                p.userWelcome Add task
+                button.btn-icon--top.addTaskContainer__close
+                    i.bx.bx-x
+
+            section.addTask-section
+                p.addTask-section__text What we are going to do?
+
+
+                form.form-add(action="/user/todo" method="POST")
+                    .form-add__box
+                        input.form-add__input(type="text" name="todobody" placeholder="Title")
+                    .form-add__box 
+                        select.form-add__input.form-add__select(name="priority" id="priority-select")
+                            option.placeholder(value='' disabled selected) -- Priority --
+                            option(value="0") Normal
+                            option(value="1") Important
+                    .form-add__box
+                        textarea.form-add__input.form-add__desc(name="tododesc" placeholder="Description")
+                    .form-add__box--btn
+                        button.btn.form-add__submit(type="submit") 
+                            i.bx.bxs-message-square-add
+                            |Add task
+
+            p.credentials Designed and Created by Bartosz Solga
+
+
+
+        .checkStats
+            .bar
+                span.userWelcome  Todays progress
+                button.btn-icon--top.checkStats__close
+                    i.bx.bx-x
+                
+            .chartBox
+                canvas(id="myChart")
+                span.chartBox__percent  
+            
+            .quote
+                br
+                br
+                p.quoteText "Dream big — but remember dreams without goals are just dreams, and they ultimately fuel disappointment."
+                p.author ~ Denzel Washington 
