@@ -2,6 +2,6 @@
 [Deployed](https://imdone-todo.herokuapp.com/)
 
 ## Guest user details:
-username: guest
+username: guest <br>
 password: guest123
 
